@@ -1,0 +1,87 @@
+<div class="login-page d-flex">
+  <section class="login-hero d-none d-lg-flex flex-column justify-content-between p-5">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-journal-bookmark-fill fs-4 hero-icon"></i>
+      <span class="hero-brand">SmartSchool</span>
+    </div>
+
+    <div class="hero-copy">
+      <h1 class="display-6 mb-3">The homework diary,<br />now on every parent's phone.</h1>
+      <p class="lead text-white-50 mb-0">
+        One platform for homework, attendance, exams, and school-to-home
+        communication — built for schools running on paper diaries today.
+      </p>
+    </div>
+
+    <p class="text-white-50 small mb-0">&copy; {{ currentYear }} TechLadder Corporation</p>
+  </section>
+
+  <section class="login-form-panel d-flex align-items-center justify-content-center p-4 flex-grow-1">
+    <div class="login-card">
+      <h2 class="h4 mb-1">Log in</h2>
+      <p class="text-secondary mb-4">Use the username, email, or phone your school gave you.</p>
+
+      @if (errorMessage()) {
+        <div class="alert alert-danger py-2 small d-flex align-items-center gap-2" role="alert">
+          <i class="bi bi-exclamation-circle"></i>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="mb-3">
+          <label for="identifier" class="form-label small fw-semibold">Username, email, or phone</label>
+          <input
+            id="identifier"
+            type="text"
+            class="form-control"
+            formControlName="identifier"
+            placeholder="e.g. priya.t or admin.gvps@smartschool.io"
+            autocomplete="username"
+          />
+          @if (form.controls.identifier.invalid && form.controls.identifier.touched) {
+            <div class="text-danger small mt-1">This field is required.</div>
+          }
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label small fw-semibold">Password</label>
+          <div class="input-group">
+            <input
+              id="password"
+              [type]="showPassword() ? 'text' : 'password'"
+              class="form-control"
+              formControlName="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+            >
+              <i class="bi" [class.bi-eye]="!showPassword()" [class.bi-eye-slash]="showPassword()"></i>
+            </button>
+          </div>
+          @if (form.controls.password.invalid && form.controls.password.touched) {
+            <div class="text-danger small mt-1">This field is required.</div>
+          }
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="isSubmitting()">
+          @if (isSubmitting()) {
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            Logging in&hellip;
+          } @else {
+            Log in
+          }
+        </button>
+      </form>
+
+      <p class="text-secondary small text-center mt-4 mb-0">
+        Forgot your password? Contact your school administrator.
+      </p>
+    </div>
+  </section>
+</div>

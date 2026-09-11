@@ -1,0 +1,77 @@
+// ============================================================
+// SmartSchool global stylesheet
+// ------------------------------------------------------------
+// Palette is built around the product's own metaphor - "digitizing the
+// paper school diary" - rather than a generic SaaS look: a warm paper
+// background, a trustworthy navy for structure/admin chrome, and a
+// highlighter-amber accent for anything homework/action related.
+// Raw color/radius/font values live in src/styles/_tokens.scss so both
+// this file and individual component stylesheets can share them.
+// ============================================================
+
+@use 'sass:color';
+@use 'styles/tokens' as t;
+
+// ---- Bootstrap variable overrides (must precede the bootstrap import) ----
+$primary:       t.$navy;
+$secondary:     t.$ink-muted;
+$body-bg:       t.$paper;
+$body-color:    t.$ink;
+$border-color:  t.$line;
+$border-radius:      t.$radius;
+$border-radius-sm:   t.$radius-sm;
+$border-radius-lg:   t.$radius-lg;
+$link-color:        t.$navy;
+$link-hover-color:  t.$amber-600;
+
+$font-family-sans-serif: t.$font-sans;
+$headings-font-family: t.$font-display;
+$headings-font-weight: 700;
+$headings-color: t.$navy;
+
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': t.$success,
+  'info': t.$info,
+  'warning': t.$amber,
+  'danger': t.$danger,
+  'light': t.$paper,
+  'dark': t.$navy-700,
+);
+
+@import 'bootstrap/scss/bootstrap';
+
+// ---- Global element styling -----------------------------------------
+html, body {
+  height: 100%;
+}
+
+body {
+  font-feature-settings: 'ss01' on;
+}
+
+// Amber focus ring instead of Bootstrap's default blue glow, so keyboard
+// focus reads as part of this product's palette.
+.form-control:focus,
+.form-select:focus,
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(232, 163, 61, 0.35); // t.$amber, rgba() needs a literal here
+  border-color: t.$amber;
+}
+
+// A single, restrained "highlighter" utility for the one or two things per
+// screen that should visually read as "this needs attention" - not applied broadly.
+.highlight-amber {
+  background-color: rgba(232, 163, 61, 0.16);
+  border-left: 3px solid t.$amber;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: color.adjust(t.$line, $lightness: -8%);
+  border-radius: t.$radius;
+}

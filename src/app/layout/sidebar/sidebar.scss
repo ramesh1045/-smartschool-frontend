@@ -1,0 +1,58 @@
+@use '../../../styles/tokens' as t;
+
+.app-sidebar {
+  width: 264px;
+  min-width: 264px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: t.$navy;
+  color: rgba(255, 255, 255, 0.92);
+  border-right: 1px solid t.$navy-700;
+}
+
+.brand {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand-icon {
+  font-size: 1.4rem;
+  color: t.$amber;
+}
+
+.brand-label {
+  font-family: t.$font-display;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  border-radius: t.$radius-sm;
+  padding: 0.55rem 0.75rem;
+  font-weight: 500;
+  font-size: 0.925rem;
+
+  i {
+    font-size: 1rem;
+    width: 1.1rem;
+    text-align: center;
+  }
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &.active {
+    color: t.$navy;
+    background: t.$amber;
+    font-weight: 600;
+  }
+}
+
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

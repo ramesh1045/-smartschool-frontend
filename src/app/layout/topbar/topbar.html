@@ -1,0 +1,29 @@
+<header class="app-topbar d-flex align-items-center justify-content-between px-4">
+  <div></div>
+
+  <div class="dropdown">
+    <button
+      class="btn user-menu-btn d-flex align-items-center gap-2"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <span class="avatar">{{ (authService.currentUser()?.username ?? '?').charAt(0).toUpperCase() }}</span>
+      <span class="d-none d-sm-flex flex-column align-items-start lh-sm">
+        <span class="fw-semibold small">{{ authService.currentUser()?.username }}</span>
+        <span class="text-secondary role-badge">{{ roleLabel() }}</span>
+      </span>
+      <i class="bi bi-chevron-down small text-secondary"></i>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+      <li><h6 class="dropdown-header">{{ authService.currentUser()?.email }}</h6></li>
+      <li><hr class="dropdown-divider" /></li>
+      <li>
+        <button class="dropdown-item d-flex align-items-center gap-2" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          Log out
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>

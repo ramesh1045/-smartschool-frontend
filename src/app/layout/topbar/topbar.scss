@@ -1,0 +1,39 @@
+@use '../../../styles/tokens' as t;
+
+.app-topbar {
+  height: 64px;
+  background: t.$surface;
+  border-bottom: 1px solid t.$line;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.user-menu-btn {
+  border: 1px solid t.$line;
+  border-radius: t.$radius;
+  padding: 0.35rem 0.75rem;
+  background: #fff;
+
+  &:hover {
+    background: t.$paper;
+  }
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: t.$navy;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: t.$font-display;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.role-badge {
+  font-size: 0.75rem;
+}

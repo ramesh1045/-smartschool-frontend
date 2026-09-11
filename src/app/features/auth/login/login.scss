@@ -1,0 +1,59 @@
+@use '../../../../styles/tokens' as t;
+
+.login-page {
+  min-height: 100vh;
+}
+
+.login-hero {
+  width: 42%;
+  min-width: 420px;
+  background: linear-gradient(165deg, t.$navy 0%, t.$navy-700 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  // Faint ruled-notebook lines in the background - a quiet nod to the
+  // product's "paper diary" metaphor without being literal or cartoonish.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 38px,
+      rgba(255, 255, 255, 0.045) 39px
+    );
+    pointer-events: none;
+  }
+}
+
+.hero-icon {
+  color: t.$amber;
+}
+
+.hero-brand {
+  font-family: t.$font-display;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+.hero-copy h1 {
+  font-family: t.$font-display;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.login-form-panel {
+  background: t.$paper;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: t.$surface;
+  border: 1px solid t.$line;
+  border-radius: t.$radius-lg;
+  padding: 2.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
